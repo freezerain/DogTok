@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "267871046904",
+    "project_id": "dogtok-firebase",
+    "storage_bucket": "dogtok-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267871046904:android:c864eca0ec97261b27bf0d",
+        "android_client_info": {
+          "package_name": "com.freezerain.dogtok"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267871046904-sghn1f5l4jsbsvs2hq3hl48pab6lui9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhITyXmbh-Uz0USww_PlLPDtfyvBBRhlY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267871046904-sghn1f5l4jsbsvs2hq3hl48pab6lui9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

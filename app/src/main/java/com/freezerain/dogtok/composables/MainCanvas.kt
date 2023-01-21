@@ -22,6 +22,7 @@ fun MainCanvas(
 ) {
     val localModifier = Modifier
     Column(localModifier.then(modifier)) {
+        //TODO here should be swipable image viewer
         val image by viewModel.image.observeAsState()
         image?.let {
             Image(

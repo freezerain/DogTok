@@ -18,7 +18,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.ui.AppBarConfiguration
 import com.freezerain.dogtok.composables.MainCanvas
 import com.freezerain.dogtok.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private var appBarConfiguration: AppBarConfiguration? = null
     private var binding: ActivityMainBinding? = null

@@ -11,42 +11,28 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.freezerain.dogtok.MainCanvasViewModel
-import com.freezerain.dogtok.R
+
 
 @Composable
-fun MainCanvas(modifier: Modifier = Modifier) {
+fun MainCanvas(
+    modifier: Modifier = Modifier,
+    viewModel: MainCanvasViewModel = viewModel()
+) {
     val localModifier = Modifier
-    val viewModel = MainCanvasViewModel()
-    val placeholderImg = painterResource(id = R.drawable.ph_cat)
-    val image by viewModel.image.observeAsState()
-
     Column(localModifier.then(modifier)) {
-
-        image?.let{Image(
-            bitmap = it.asImageBitmap(),
-            contentDescription = "DOG", contentScale = ContentScale.Fit, modifier = Modifier.weight(1.0f, true).fillMaxSize()
-        )}
-        Button(onClick = { onLoadDog(viewModel) }) {
+        val image by viewModel.image.observeAsState()
+        image?.let {
+            Image(
+                bitmap = it.asImageBitmap(),
+                contentDescription = "DOG", contentScale = ContentScale.Fit, modifier = Modifier
+                    .weight(1.0f, true)
+                    .fillMaxSize()
+            )
+        }
+        Button(onClick = { viewModel.nextImage() }) {
             Text(text = "Load dog")
         }
     }
-}
-
-@Preview
-@Composable
-fun MainCanvasPreview() {
-    val img = painterResource(id = R.drawable.ph_cat)
-    Column {
-        Image(img, contentDescription = "a cat!", modifier = Modifier.weight(1.0f, true).fillMaxSize())
-        Button(onClick = {  }) {
-            Text(text = "Load dog")
-        }
-    }
-}
-
-fun onLoadDog(viewModel: MainCanvasViewModel) {
-    viewModel.nextUrl()
 }

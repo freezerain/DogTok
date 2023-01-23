@@ -1,4 +1,4 @@
-package com.freezerain.dogtok
+package com.freezerain.dogtok.data
 
 import com.google.gson.annotations.SerializedName
 

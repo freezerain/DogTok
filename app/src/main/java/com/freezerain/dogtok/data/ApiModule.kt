@@ -1,4 +1,4 @@
-package com.freezerain.dogtok
+package com.freezerain.dogtok.data
 
 import dagger.Module
 import dagger.Provides

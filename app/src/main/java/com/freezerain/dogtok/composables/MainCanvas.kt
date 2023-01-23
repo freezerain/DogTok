@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.freezerain.dogtok.MainCanvasViewModel
+import com.freezerain.dogtok.viewModels.MainCanvasViewModel
 
 
 @Composable

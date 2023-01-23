@@ -1,5 +1,6 @@
-package com.freezerain.dogtok
+package com.freezerain.dogtok.data
 
+import com.freezerain.dogtok.data.DogApiModel
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET

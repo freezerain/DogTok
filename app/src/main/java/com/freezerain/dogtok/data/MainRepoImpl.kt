@@ -2,6 +2,8 @@ package com.freezerain.dogtok
 
 import android.graphics.Bitmap
 import android.util.Log
+import com.freezerain.dogtok.data.DogApi
+import com.freezerain.dogtok.data.Repo
 import com.squareup.picasso.Picasso
 import dagger.Binds
 import dagger.Module
@@ -14,7 +16,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 class MainRepoImpl @Inject constructor(
-    private val dogApi:DogApi
+    private val dogApi: DogApi
 ) : Repo {
 
     //Build an infinite image producer that can hold up to capacity+1 images

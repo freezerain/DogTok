@@ -14,9 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.ui.AppBarConfiguration
-import com.freezerain.dogtok.composables.MainCanvas
 import com.freezerain.dogtok.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,26 +30,13 @@ class MainActivity : AppCompatActivity() {
             MaterialTheme {
                 Column (modifier = Modifier.fillMaxSize()){
                     Box(Modifier.weight(1.0f, true).fillMaxSize()){
-                        MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
+                        //MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
+                        MainPager(Modifier.fillMaxSize())
                         CanvasControl(Modifier.align(Alignment.BottomEnd))
                     }
                     BottomAppBar()
                 }
             }
-        }
-    }
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MaterialTheme {
-        Column (modifier = Modifier.fillMaxSize()){
-            Box(Modifier.weight(1.0f, true).fillMaxSize()){
-                MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
-                CanvasControl(Modifier.align(Alignment.BottomEnd))
-            }
-            BottomAppBar()
         }
     }
 }
@@ -90,7 +75,7 @@ fun BottomAppBar(modifier: Modifier = Modifier) {
 @Composable
 fun CanvasControl(modifier: Modifier = Modifier) {
     val controlModifier = Modifier
-    Column(modifier = controlModifier.then(modifier)) {
+    Column(modifier = modifier) {
         val ctx = LocalContext.current
         IconButton(onClick = { onBtnPressed(ctx, "Favourite") }) {
             Icon(Icons.Filled.Favorite, contentDescription = "Localized description")

@@ -21,7 +21,9 @@ class MainCanvasViewModel @Inject constructor(
     init {
         nextImage()
     }
-
-    fun nextImage() = viewModelScope.launch { _image.value = repo.imageProducer.receive() }
+    //TODO Potential NULL??? Investigate
+    fun nextImage() = viewModelScope.launch {
+        repo.imageProducer.receive()?.let { _image.value = it }
+    }
 
 }

@@ -17,9 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.freezerain.dogtok.viewModels.CardsViewModel
-import com.google.accompanist.pager.ExperimentalPagerApi
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun MainPager(
     modifier: Modifier = Modifier,
@@ -27,11 +26,11 @@ fun MainPager(
 ) {
     val localModifier = Modifier.padding(5.dp)
     Column(localModifier.then(modifier)) {
-        val pagerState = rememberPagerState()
         val items = viewModel.items
+        val pagerState = rememberPagerState(initialPage = 0, 0.0f, items::size)
 
         VerticalPager(
-            pageCount = items.size, modifier = Modifier
+            modifier = Modifier
                 .weight(1.0f, true)
                 .fillMaxSize(), state = pagerState, flingBehavior = PagerDefaults.flingBehavior(
                 state = pagerState, pagerSnapDistance = PagerSnapDistance.atMost(0)

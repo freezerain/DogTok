@@ -26,8 +26,7 @@ fun Card(
     title: String = "Its a DOG",
     description: String = "Very good boy"
 ) {
-    val localModifier = Modifier
-    Box(modifier = localModifier.then(modifier)) {
+    Box(modifier) {
         Image(
             bitmap = dogModel.imageBitmap,
             contentDescription = "DOG",

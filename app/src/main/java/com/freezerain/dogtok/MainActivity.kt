@@ -6,10 +6,28 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
+import androidx.compose.material.icons.filled.AddBox
+import androidx.compose.material.icons.filled.Chat
+import androidx.compose.material.icons.filled.Comment
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material3.BottomAppBar
+import androidx.compose.material3.BottomAppBarDefaults
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -29,8 +47,8 @@ class MainActivity : AppCompatActivity() {
 
         setContent {
             MaterialTheme {
-                Column (modifier = Modifier.fillMaxSize()){
-                    Box(Modifier.weight(1.0f, true).fillMaxSize()){
+                Column (Modifier.fillMaxSize()){
+                    Box(Modifier.fillMaxSize()){
                         //MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
                         MainPager(Modifier.fillMaxSize())
                         CanvasControl(Modifier.align(Alignment.BottomEnd))
@@ -44,9 +62,8 @@ class MainActivity : AppCompatActivity() {
 
 @Composable
 fun BottomAppBar(modifier: Modifier = Modifier) {
-    val localModifier = Modifier
     val ctx = LocalContext.current
-    BottomAppBar(localModifier.then(modifier)){
+    BottomAppBar(modifier){
         Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth()){
             IconButton(onClick = { onBtnPressed(ctx, "Home") }) {
                 Icon(Icons.Filled.Home, contentDescription = "Home button")
@@ -75,8 +92,7 @@ fun BottomAppBar(modifier: Modifier = Modifier) {
 
 @Composable
 fun CanvasControl(modifier: Modifier = Modifier) {
-    val controlModifier = Modifier
-    Column(modifier = modifier) {
+    Column(modifier) {
         val ctx = LocalContext.current
         IconButton(onClick = { onBtnPressed(ctx, "Favourite") }) {
             Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
@@ -91,5 +107,5 @@ fun CanvasControl(modifier: Modifier = Modifier) {
 }
 
 fun onBtnPressed(ctx: Context, btnName: String) {
-    Toast.makeText(ctx, "$btnName pressed", Toast.LENGTH_SHORT).show()
+    Toast.makeText(ctx, "Button: \"$btnName\" pressed!", Toast.LENGTH_SHORT).show()
 }

@@ -36,7 +36,7 @@ fun MainPager(
                 state = pagerState, pagerSnapDistance = PagerSnapDistance.atMost(0)
             )
         ) { page ->
-            Card(modifier = modifier, dogModel = items[page])
+            Card(modifier, dogModel = items[page])
         }
 
         LaunchedEffect(pagerState) {

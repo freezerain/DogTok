@@ -1,20 +1,6 @@
 package com.freezerain.dogtok
 
-import android.graphics.Bitmap
-import android.util.Log
-import com.freezerain.dogtok.data.DogApi
-import com.freezerain.dogtok.data.Repo
-import com.squareup.picasso.Picasso
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.produce
-import retrofit2.HttpException
-import javax.inject.Inject
-import javax.inject.Singleton
-
+/*
 class MainRepoImpl @Inject constructor(
     private val dogApi: DogApi
 ) : Repo {
@@ -60,4 +46,4 @@ abstract class RepoModule{
     @Singleton
     @Binds
     abstract fun bindRepo(mainRepoImpl: MainRepoImpl) : Repo
-}
+}*/

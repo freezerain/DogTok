@@ -1,8 +1,14 @@
 package com.freezerain.dogtok.data
 
+import android.content.Context
+import com.freezerain.dogtok.data.dogApi.ApiRepository
+import com.freezerain.dogtok.data.dogApi.ApiService
+import com.freezerain.dogtok.util.GlideImageLoader
+import com.freezerain.dogtok.util.ImageLoader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,5 +46,17 @@ object ApiModule {
 
     @Singleton
     @Provides
-    fun provideDogApiService(retrofit: Retrofit): DogApi = retrofit.create(DogApi::class.java)
+    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+
+
+    @Provides
+    fun provideImageLoader(@ApplicationContext context: Context): ImageLoader {
+        //return PicassoImageLoader()
+        return GlideImageLoader(context)
+    }
+
+    @Provides
+    fun provideApiRepository(apiService:ApiService): ApiRepository {
+        return ApiRepository(apiService)
+    }
 }

@@ -32,12 +32,12 @@ class ToolModule {
 
     @Singleton
     @Provides
-    fun providePicassoImageLoader(): ImageLoader = PicassoImageLoader()
+    fun providePicassoImageLoader(): PicassoImageLoader = PicassoImageLoader()
 
 
     @Singleton
     @Provides
-    fun provideGlideImageLoader(@ApplicationContext context: Context): ImageLoader =
+    fun provideGlideImageLoader(@ApplicationContext context: Context): GlideImageLoader =
         GlideImageLoader(context)
 
     @Singleton

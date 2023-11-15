@@ -1,6 +1,7 @@
 package com.freezerain.dogtok.di
 
-import com.freezerain.dogtok.data.dogApi.ApiRepository
+import com.freezerain.dogtok.data.dogApi.ApiRepo
+import com.freezerain.dogtok.data.dogApi.ApiRepositoryImpl
 import com.freezerain.dogtok.data.dogApi.ApiService
 import dagger.Module
 import dagger.Provides
@@ -25,7 +26,6 @@ object ApiModule {
 
 
     @Provides
-    fun provideApiRepository(apiService: ApiService): ApiRepository {
-        return ApiRepository(apiService)
-    }
+    fun provideApiRepository(apiService: ApiService): ApiRepo =
+        ApiRepositoryImpl(apiService)
 }

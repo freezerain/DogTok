@@ -19,7 +19,7 @@ class BackboneModule {
     @Provides
     fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = HttpLoggingInterceptor.Level.BASIC
         }
 
     @Singleton

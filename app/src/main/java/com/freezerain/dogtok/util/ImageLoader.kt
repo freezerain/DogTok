@@ -2,6 +2,7 @@ package com.freezerain.dogtok.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
@@ -33,6 +34,7 @@ class GlideImageLoader(private val context: Context) : ImageLoader {
                 .submit()
                 .get()
         } catch (e: Exception) {
+            Log.e(javaClass.simpleName, "ERROR in loadImage: $e")
             null
         }
     }

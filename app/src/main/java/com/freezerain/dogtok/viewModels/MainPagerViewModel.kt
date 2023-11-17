@@ -48,10 +48,10 @@ class MainPagerViewModel @Inject constructor(
 					}
 					.map {apiResponse -> imageLoader.loadImage(apiResponse.message)!!}
 					//.buffer(capacity = 5)
+					.retry(3)
 					.catch {
 						Log.e(javaClass.simpleName, "error in loadImages: $it")
-					}.retry(3)
-					.onCompletion {
+					}.onCompletion {
 						Log.d(javaClass.simpleName,
 							"loadImages: complete flow, reason: $it")}
 					.flowOn(Dispatchers.IO)

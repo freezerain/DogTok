@@ -33,7 +33,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.ui.AppBarConfiguration
-import com.freezerain.dogtok.composables.MainPager
+import com.freezerain.dogtok.composables.MainFeed
 import com.freezerain.dogtok.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -49,8 +49,10 @@ class MainActivity : AppCompatActivity() {
             MaterialTheme {
                 Column (Modifier.fillMaxSize()){
                     Box(Modifier.fillMaxSize()){
+                        //Old implementations
                         //MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
-                        MainPager(Modifier.fillMaxSize())
+                        //MainPager(Modifier.fillMaxSize())
+                        MainFeed(Modifier.fillMaxSize())
                         CanvasControl(Modifier.align(Alignment.BottomEnd))
                     }
                     BottomAppBar()

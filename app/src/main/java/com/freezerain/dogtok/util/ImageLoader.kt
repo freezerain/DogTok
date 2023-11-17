@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 
 interface ImageLoader {
-    fun loadImage(url: String): Drawable?
+    suspend fun loadImage(url: String): Drawable?
     fun loadImage(url: String, target: Target)
 }
 
@@ -19,14 +19,14 @@ class PicassoImageLoader : ImageLoader {
         Picasso.get().load(url).into(target)
     }
 
-    override fun loadImage(url: String): Drawable? {
+    override suspend fun loadImage(url: String): Drawable? {
         TODO("Not yet implemented")
     }
 }
 
 class GlideImageLoader(private val context: Context) : ImageLoader {
 
-    override fun loadImage(url: String): Drawable? {
+    override suspend fun loadImage(url: String): Drawable? {
         return try {
             Glide.with(context)
                 .asDrawable()

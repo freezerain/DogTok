@@ -13,11 +13,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AddBox
-import androidx.compose.material.icons.filled.Chat
-import androidx.compose.material.icons.filled.Comment
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Send
@@ -78,10 +78,10 @@ fun BottomAppBar(modifier: Modifier = Modifier) {
                 containerColor = BottomAppBarDefaults.bottomAppBarFabColor,
                 elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
             ) {
-                Icon(Icons.Filled.AddBox, "Add button")
+                Icon(Icons.Filled.Add, "Add button")
             }
             IconButton(onClick = { onBtnPressed(ctx, "Chat") }) {
-                Icon(Icons.Filled.Chat, contentDescription = "Localized description")
+                Icon(Icons.Filled.Email, contentDescription = "Localized description")
             }
             IconButton(onClick = { onBtnPressed(ctx, "Person") }) {
                 Icon(Icons.Filled.Person, contentDescription = "Localized description")
@@ -100,7 +100,7 @@ fun CanvasControl(modifier: Modifier = Modifier) {
             Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
         }
         IconButton(onClick = { onBtnPressed(ctx, "Comments") }) {
-            Icon(Icons.Filled.Comment, contentDescription = "Localized description")
+            Icon(Icons.Filled.Menu, contentDescription = "Localized description")
         }
         IconButton(onClick = { onBtnPressed(ctx, "Send to") }) {
             Icon(Icons.Filled.Send, contentDescription = "Localized description")

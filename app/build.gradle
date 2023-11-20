@@ -66,6 +66,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.google.dagger:hilt-android:2.48.1'
     implementation 'com.github.bumptech.glide:glide:4.14.2'
+    // GlideImage and GlideLazyLoader with Compose
+    implementation 'com.github.bumptech.glide:compose:1.0.0-beta01'
 
     //Unit testing
     testImplementation 'junit:junit:4.13.2'

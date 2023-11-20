@@ -46,7 +46,13 @@ class MainPagerViewModel @Inject constructor(
 					.onEach {url ->
 						Log.d(javaClass.simpleName, "loadImages: emitted: $url")
 					}
-					.map {apiResponse -> imageLoader.loadImage(apiResponse.message)!!}
+					.map { apiResponse ->
+						var image: Drawable? = null
+						imageLoader.loadImage(apiResponse.message) {
+							image = it
+						}
+						image!!
+					}
 					//.buffer(capacity = 5)
 					.retry(3)
 					.catch {

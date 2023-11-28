@@ -1,5 +1,7 @@
 package com.freezerain.dogtok.composables
 
+import android.util.Log
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,27 +23,34 @@ fun ReactivePager(
 ) {
     val lazyPagingItems = reactivePagerViewModel.flow.collectAsLazyPagingItems()
 
-    LazyColumn {
-        if (lazyPagingItems.loadState.refresh == LoadState.Loading) {
-            item {
-                Text(text = "Waiting for items to load from the backend",
-                    modifier = Modifier
+    //Show loading for refreshing ALL items
+    if (lazyPagingItems.loadState.refresh == LoadState.Loading) {
+        Text(text = "Waiting for items to load from the backend",
+                modifier = Modifier
                         .fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally))
-            }
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                fontSize = 30.sp)
+    }
+    else LazyColumn(modifier = Modifier.fillMaxSize()) {
+
+        if(lazyPagingItems.loadState.append is LoadState.Error || lazyPagingItems.loadState.refresh is LoadState.Error){
+            Log.e(javaClass.simpleName, "ERROR in ReactivePager: ERROR")
+            lazyPagingItems.retry()
         }
 
         items(count = lazyPagingItems.itemCount) {index ->
-            val item = lazyPagingItems[index]
             Text("Index=$index", fontSize = 20.sp)
-            item?.let{AutoloadingCard(imageLoader = reactivePagerViewModel.imageLoader, url = it)}
+            lazyPagingItems[index]?.let{
+                Card(Modifier.fillMaxSize(),image = it)
+            }
         }
 
+        //Show loading for adding new items
         if (lazyPagingItems.loadState.append == LoadState.Loading) {
             item {
                 CircularProgressIndicator(modifier = Modifier
-                    .fillMaxWidth()
-                    .wrapContentWidth(Alignment.CenterHorizontally))
+                        .fillMaxWidth()
+                        .wrapContentWidth(Alignment.CenterHorizontally))
             }
         }
     }

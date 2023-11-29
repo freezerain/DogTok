@@ -3,6 +3,8 @@ package com.freezerain.dogtok
 
 import android.content.Context
 import android.os.Bundle
+import android.os.StrictMode
+import android.os.StrictMode.VmPolicy
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +46,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // LOG policy violation like resource fail to close
+        // Remove from prod build
+        val policy = VmPolicy.Builder().detectAll().penaltyLog().build()
+        StrictMode.setVmPolicy(policy)
 
         setContent {
             MaterialTheme {

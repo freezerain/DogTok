@@ -1,5 +1,6 @@
 package com.freezerain.dogtok.di
 
+import android.net.TrafficStats
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +21,9 @@ class BackboneModule {
     fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BASIC
+            // TODO Trying to get rid of socket tag violation
+            // wth is happening here
+            TrafficStats.setThreadStatsTag(Thread.currentThread().id.toInt())
         }
 
     @Singleton

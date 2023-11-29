@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
 import com.freezerain.dogtok.util.ImageLoader
-
+//TODO Update autoload card and test performance
 @Composable
 fun AutoloadCard(
     modifier: Modifier = Modifier,

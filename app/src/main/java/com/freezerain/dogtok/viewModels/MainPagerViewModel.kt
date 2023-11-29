@@ -34,7 +34,7 @@ class MainPagerViewModel @Inject constructor(
 	init {
 		loadImages(5)
 	}
-
+	// TODO extract logic to separate layer
 	fun loadImages(count:Int = 3) {
 		viewModelScope.launch {
 			jobMutex.withLock {

@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         val policy = VmPolicy.Builder().detectAll().penaltyLog().build()
         StrictMode.setVmPolicy(policy)
 
-        setContent {
+        setContent { // TODO Finish app styling
             MaterialTheme {
                 Column (Modifier.fillMaxSize()){
                     Box(Modifier.fillMaxSize()){

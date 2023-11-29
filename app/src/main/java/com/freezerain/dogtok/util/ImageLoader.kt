@@ -30,10 +30,12 @@ class PicassoImageLoader : ImageLoader {
 }
 
 class GlideImageLoader(private val context: Context) : ImageLoader {
+    // TODO Consider using Target for image loading
     override suspend fun loadImage(url: String, callback: (Drawable) -> Unit) {
         try {
             callback(withContext(Dispatchers.IO) {
                 Glide.with(context)
+                    //.clearOnStop()
                     .load(url)
                     .placeholder(android.R.drawable.stat_sys_download)
                     .error(android.R.drawable.stat_notify_error)
@@ -41,7 +43,7 @@ class GlideImageLoader(private val context: Context) : ImageLoader {
                     .submit()
                     .get()
             })
-        } catch (e: Exception) {
+        } catch (e: Exception) { // TODO Memory leak here, resources not released on 404
             when (e) {
                 is IOException, is CancellationException, is ExecutionException -> {
                     throw ImageLoadingException("Error loading image using Glide", e)

@@ -11,6 +11,9 @@ fun MainFeed (
 ) {
 	val localModifier = Modifier.padding(5.dp)
 	Column(localModifier.then(modifier)) {
+		// TODO Use both types of Pager
+		// maybe create 2 tabs with each of them
+		//MainPager()
 		ReactivePager()
 	}
 }

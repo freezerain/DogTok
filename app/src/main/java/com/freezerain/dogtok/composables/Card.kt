@@ -30,7 +30,7 @@ fun Card(
 ) {
     Box(modifier) {
         Image(
-            bitmap = image.toBitmap().asImageBitmap(), contentDescription = "DOG",
+            bitmap = image.toBitmap().asImageBitmap(), contentDescription = "DOG", // TODO Consider using Painter
             modifier = Modifier.fillMaxSize(), alignment = Alignment.Center,
             contentScale = ContentScale.Fit
         )

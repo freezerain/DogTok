@@ -35,6 +35,7 @@ fun ReactivePager(
     val columnState = rememberLazyListState()
     val snappingLayout = remember(columnState) { SnapLayoutInfoProvider(columnState) }
     val flingBehavior = rememberSnapFlingBehavior(snappingLayout)
+    //TODO implement fling limit of 1
 
     //Show loading for refreshing ALL items
     if (lazyPagingItems.loadState.refresh == LoadState.Loading) {
@@ -47,7 +48,7 @@ fun ReactivePager(
     else LazyColumn(modifier = Modifier.fillMaxSize(), state = columnState, flingBehavior = flingBehavior) {
 
         if(lazyPagingItems.loadState.append is LoadState.Error || lazyPagingItems.loadState.refresh is LoadState.Error){
-            Log.e(javaClass.simpleName, "ERROR in ReactivePager: ERROR")
+            Log.e(javaClass.simpleName, "ERROR in ReactivePager: retrying")
             lazyPagingItems.retry()
         }
 

@@ -33,7 +33,6 @@ class DogPagingSource @Inject constructor(
       )
     } catch (e: Exception) {
         when(e) {
-            // TODO Review exception types
             is IOException, is HttpException, is NullPointerException, is ImageLoadingException -> {
               LoadResult.Error(e)
             }

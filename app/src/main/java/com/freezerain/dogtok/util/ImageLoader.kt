@@ -2,9 +2,7 @@ package com.freezerain.dogtok.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.HttpException
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.Target
 import kotlinx.coroutines.Dispatchers
@@ -40,9 +38,7 @@ class GlideImageLoader(private val context: Context) : ImageLoader {
                     .placeholder(android.R.drawable.stat_sys_download)
                     .error(android.R.drawable.stat_notify_error)
                     //.fallback(android.R.drawable.stat_notify_sync)
-                    //TODO Remove test delay
                     .submit()
-                    .apply{delay(500)}
                     .get()
             })
         } catch (e: Exception) {

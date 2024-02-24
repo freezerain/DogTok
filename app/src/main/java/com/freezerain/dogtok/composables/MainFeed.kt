@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.freezerain.dogtok.data.TabItem
@@ -52,7 +53,10 @@ fun MainFeed(
     Column(
         modifier = localModifier.then(modifier).then(Modifier.padding(paddingValues))
     ) {
-        TabRow(selectedTabIndex = pagerState.currentPage) {
+        TabRow(selectedTabIndex = pagerState.currentPage,
+            containerColor = Color.Transparent,
+
+        ) {
             tabs.forEachIndexed { index, tabItem ->
                 Tab(
                     selected = pagerState.currentPage == index,

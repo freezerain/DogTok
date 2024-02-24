@@ -37,13 +37,13 @@ fun Card(
         Column(
             modifier = Modifier
                 .align(Alignment.BottomStart)
-                .padding(20.dp)
+                .padding(8.dp)
         ) {
             Text(
                 text = title,
-                fontSize = 28.sp, color = Color(1f, 0.1f, 0.1f, 1f)
+                fontSize = 18.sp, color = Color(0.5f, 0.5f, 0.5f, 1f)
             )
-            Text(text = description, fontSize = 14.sp, color = Color(1f, 0.1f, 0.1f, 1f))
+            Text(text = description, fontSize = 14.sp, color = Color(0.75f, 0.75f, 0.75f, 1f))
         }
     }
 

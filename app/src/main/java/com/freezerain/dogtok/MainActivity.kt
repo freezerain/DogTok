@@ -59,15 +59,14 @@ class MainActivity : AppCompatActivity() {
         setContent { // TODO Finish app styling
             MaterialTheme {
                 Column(Modifier.fillMaxSize()) {
-                    //TODO Buttons are pusshed out by main canvas
-                    BottomAppBar()
-                    Box() {
+                    Box(modifier = Modifier.weight(1.0f)) {
                         //Old implementations
                         //MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
                         //MainPager(Modifier.fillMaxSize())
-                        MainFeed(Modifier.fillMaxSize())
+                        MainFeed()
                         CanvasControl(Modifier.align(Alignment.BottomEnd))
                     }
+                    BottomAppBar()
                 }
             }
         }

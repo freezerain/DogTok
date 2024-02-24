@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Email
@@ -33,7 +35,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.navigation.ui.AppBarConfiguration
 import com.freezerain.dogtok.composables.MainFeed
 import com.freezerain.dogtok.databinding.ActivityMainBinding
@@ -54,15 +58,16 @@ class MainActivity : AppCompatActivity() {
 
         setContent { // TODO Finish app styling
             MaterialTheme {
-                Column (Modifier.fillMaxSize()){
-                    Box(Modifier.fillMaxSize()){
+                Column(Modifier.fillMaxSize()) {
+                    //TODO Buttons are pusshed out by main canvas
+                    BottomAppBar()
+                    Box() {
                         //Old implementations
                         //MainCanvas(Modifier.align(Alignment.Center).fillMaxSize())
                         //MainPager(Modifier.fillMaxSize())
                         MainFeed(Modifier.fillMaxSize())
                         CanvasControl(Modifier.align(Alignment.BottomEnd))
                     }
-                    BottomAppBar()
                 }
             }
         }
@@ -72,13 +77,23 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun BottomAppBar(modifier: Modifier = Modifier) {
     val ctx = LocalContext.current
-    BottomAppBar(modifier){
-        Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth()){
-            IconButton(onClick = { onBtnPressed(ctx, "Home") }) {
-                Icon(Icons.Filled.Home, contentDescription = "Home button")
+    BottomAppBar(
+        modifier,
+        containerColor = Color(0.0f, 0.0f, 0.0f, 1.0f),
+        contentColor = Color.White
+    ) {
+        Row(
+            modifier = Modifier,
+            horizontalArrangement = Arrangement.SpaceAround,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            val btnMod = Modifier.padding(16.dp)
+            val iconMod = Modifier.size(32.dp)
+            IconButton(modifier = btnMod, onClick = { onBtnPressed(ctx, "Home") }) {
+                Icon(Icons.Filled.Home, contentDescription = "Home button", modifier = iconMod)
             }
-            IconButton(onClick = { onBtnPressed(ctx, "Search") }) {
-                Icon(Icons.Filled.Search, contentDescription = "Search button")
+            IconButton(modifier = btnMod, onClick = { onBtnPressed(ctx, "Search") }) {
+                Icon(Icons.Filled.Search, contentDescription = "Search button", modifier = iconMod)
             }
             FloatingActionButton(
                 onClick = { onBtnPressed(ctx, "Add") },
@@ -87,11 +102,19 @@ fun BottomAppBar(modifier: Modifier = Modifier) {
             ) {
                 Icon(Icons.Filled.Add, "Add button")
             }
-            IconButton(onClick = { onBtnPressed(ctx, "Chat") }) {
-                Icon(Icons.Filled.Email, contentDescription = "Localized description")
+            IconButton(modifier = btnMod, onClick = { onBtnPressed(ctx, "Chat") }) {
+                Icon(
+                    Icons.Filled.Email,
+                    contentDescription = "Localized description",
+                    modifier = iconMod
+                )
             }
-            IconButton(onClick = { onBtnPressed(ctx, "Person") }) {
-                Icon(Icons.Filled.Person, contentDescription = "Localized description")
+            IconButton(modifier = btnMod, onClick = { onBtnPressed(ctx, "Person") }) {
+                Icon(
+                    Icons.Filled.Person,
+                    contentDescription = "Localized description",
+                    modifier = iconMod
+                )
             }
         }
 
